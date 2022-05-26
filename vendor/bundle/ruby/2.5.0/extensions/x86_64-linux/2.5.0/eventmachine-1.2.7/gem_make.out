@@ -1,0 +1,16 @@
+current directory: /www/wwwroot/www.xiangli.site/www.xiangli.site.dev/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/bin/ruby2.5 -r ./siteconf20220125-24633-1dqr8im.rb extconf.rb
+creating Makefile
+
+current directory: /www/wwwroot/www.xiangli.site/www.xiangli.site.dev/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /www/wwwroot/www.xiangli.site/www.xiangli.site.dev/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR="
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /www/wwwroot/www.xiangli.site/www.xiangli.site.dev/vendor/bundle/ruby/2.5.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20220125-24633-199xki0

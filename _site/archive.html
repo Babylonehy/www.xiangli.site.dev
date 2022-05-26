@@ -1,0 +1,1303 @@
+<!DOCTYPE html><html lang="en">
+  <head><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122620714-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-122620714-1');
+		
+	</script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Archive - Xiang Li's Space</title>
+
+<meta name="description" content="Feed  body with  food, feed your soul with love.">
+<link rel="canonical" href="https://www.xiangli.site/archive.html"><link rel="alternate" type="application/rss+xml" title="Xiang Li's Space" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!--<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff"> -->
+<!-- end favicons snippet -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/assets/browserconfig.xml">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://unpkg.com/gitalk@latest/dist/gitalk.min.js',
+          css: 'https://unpkg.com/gitalk@latest/dist/gitalk.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3,h4'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="400.000000pt" height="400.000000pt" viewBox="0 0 400.000000 400.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,400.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M598 3968 c-50 -47 -79 -111 -89 -196 -5 -47 -19 -96 -40 -140 -161
+-342 -244 -597 -280 -852 -66 -475 24 -885 266 -1215 25 -33 49 -69 54 -80 5
+-11 51 -63 103 -115 99 -99 106 -105 203 -182 33 -26 73 -57 89 -70 16 -13 61
+-42 100 -65 39 -24 78 -47 86 -53 8 -5 35 -20 60 -33 178 -94 240 -133 240
+-151 0 -7 -32 -35 -71 -62 -40 -27 -95 -66 -123 -86 -28 -20 -64 -44 -81 -54
+-16 -9 -32 -20 -35 -23 -8 -11 -299 -201 -318 -208 -9 -4 -19 -10 -22 -14 -9
+-13 -127 -69 -146 -69 -10 0 -35 -12 -56 -26 -33 -23 -51 -27 -134 -32 -88 -4
+-97 -7 -106 -28 -9 -20 -6 -30 17 -63 15 -22 36 -43 46 -46 11 -4 19 -14 19
+-24 0 -65 75 -80 405 -80 272 -1 347 9 432 52 44 23 46 22 40 -18 -6 -36 7
+-49 17 -17 9 30 46 245 46 269 0 49 -19 19 -30 -48 l-12 -72 -26 46 c-30 56
+-48 54 -20 -3 11 -22 22 -56 25 -77 l5 -38 -103 -34 c-91 -30 -123 -35 -270
+-44 -91 -5 -195 -6 -231 -3 l-64 7 -13 92 c-6 51 -15 107 -18 124 -5 30 -3 33
+21 33 25 0 132 52 186 90 15 11 36 23 46 27 11 5 66 40 123 78 143 97 173 117
+212 142 19 12 41 28 49 35 8 8 47 34 85 58 39 24 81 54 96 67 14 13 30 23 35
+23 10 0 94 -122 94 -135 0 -3 7 -17 17 -31 54 -83 82 -252 83 -498 l0 -129 49
+6 c93 11 121 50 104 145 -13 70 -7 92 22 92 33 0 52 -23 60 -70 4 -26 12 -40
+22 -40 12 0 14 7 8 36 -14 77 -38 104 -94 104 -48 0 -60 -34 -47 -131 8 -63
+-8 -93 -55 -104 -29 -7 -30 -5 -45 113 -6 48 -5 52 14 52 24 0 32 -18 32 -77
+0 -31 4 -43 13 -40 14 5 11 95 -5 115 -6 6 -21 12 -34 12 -21 0 -24 5 -24 35
+0 31 3 35 25 35 14 0 25 6 25 13 0 24 55 67 86 67 34 0 103 -30 122 -53 8 -9
+17 -42 21 -73 5 -36 14 -60 24 -66 26 -14 22 -67 -6 -77 -29 -11 -44 -29 -52
+-64 -10 -40 27 -38 42 3 14 38 30 38 38 0 4 -17 10 -30 13 -30 4 0 7 123 7
+272 l0 273 34 60 c19 33 41 67 48 75 7 8 32 40 55 70 23 30 56 71 73 91 16 19
+44 52 60 73 17 20 41 50 55 65 14 15 50 56 80 92 72 84 239 266 279 303 17 17
+31 35 31 41 0 6 35 16 81 23 140 20 220 82 259 200 46 135 5 258 -105 319 -14
+8 -12 19 13 104 16 51 35 137 42 189 17 129 0 216 -71 358 -60 119 -89 160
+-179 252 -186 190 -457 299 -920 369 -394 60 -589 62 -699 6 -26 -12 -57 -26
+-71 -30 -14 -4 -41 -18 -60 -30 -19 -12 -66 -41 -105 -64 -147 -89 -251 -186
+-393 -367 -82 -106 -101 -138 -109 -182 -12 -69 -8 -361 6 -552 12 -152 16
+-170 46 -235 60 -127 85 -184 85 -193 0 -4 20 -39 45 -78 34 -51 38 -60 15
+-34 -36 40 -99 130 -119 168 -7 15 -21 36 -31 47 -39 45 -143 277 -159 355 -5
+25 -19 88 -30 140 -75 345 -3 823 185 1238 13 29 24 56 24 61 0 5 16 43 36 85
+l36 76 44 -31 c24 -16 57 -34 72 -39 47 -16 290 -40 406 -40 68 0 130 -6 157
+-14 37 -11 198 -48 275 -62 20 -3 21 -7 12 -55 -5 -28 -7 -57 -5 -63 7 -17
+128 -36 229 -36 107 0 121 10 137 90 12 58 13 60 44 60 18 0 70 7 117 15 203
+37 194 37 288 14 156 -38 459 -13 544 45 18 12 42 26 53 30 25 11 113 8 188
+-5 61 -11 233 -64 251 -78 6 -4 33 -16 60 -26 27 -10 68 -31 92 -46 44 -30
+204 -199 204 -216 0 -6 9 -18 21 -29 12 -10 27 -31 35 -46 26 -50 52 -210 65
+-396 14 -194 10 -235 -30 -312 -10 -19 -24 -53 -30 -75 -7 -22 -21 -59 -31
+-81 -11 -23 -28 -66 -39 -95 -63 -172 -164 -384 -225 -471 -54 -78 -110 -133
+-221 -218 -44 -34 -82 -65 -85 -69 -3 -3 -16 -14 -30 -23 -14 -10 -42 -30 -62
+-45 -21 -15 -65 -48 -99 -73 -55 -41 -79 -60 -158 -133 -22 -20 -21 -17 7 33
+67 121 83 152 80 156 -4 3 -26 -29 -113 -166 -197 -307 -234 -348 -411 -456
+-49 -29 -62 -44 -42 -44 9 0 19 4 23 9 3 5 29 21 58 35 28 14 71 37 95 51 l43
+24 43 -22 c24 -12 69 -38 100 -57 31 -19 72 -44 91 -55 36 -22 364 -239 380
+-253 48 -39 125 -91 125 -83 0 5 -4 13 -10 16 -5 3 -10 10 -10 15 0 15 160
+-40 188 -65 2 -2 -7 -23 -19 -47 -29 -55 -41 -208 -17 -208 12 0 17 18 21 78
+3 42 12 94 18 116 13 37 14 38 53 33 21 -3 76 1 120 9 45 8 91 14 104 14 28 0
+29 -25 2 -42 -26 -17 -25 -22 5 -36 29 -13 32 -34 9 -57 -13 -12 -14 -19 -4
+-30 16 -19 1 -39 -49 -65 l-36 -19 29 -1 c36 0 88 55 91 96 1 16 5 37 9 46 5
+11 0 24 -13 37 -17 17 -19 24 -9 40 6 10 8 26 5 35 -6 15 -21 16 -157 10 -109
+-5 -150 -4 -150 4 0 21 -50 44 -164 77 -76 21 -126 41 -148 59 -29 25 -81 62
+-173 126 -16 11 -67 46 -112 78 -46 31 -106 71 -133 87 -40 23 -115 70 -148
+91 -1 1 17 30 40 64 24 35 53 80 65 101 36 65 185 199 220 199 31 0 187 -144
+300 -275 28 -33 54 -57 57 -54 3 3 13 43 21 90 16 93 19 244 6 302 -5 20 -5
+39 -1 42 9 6 133 -52 173 -80 15 -11 53 -39 83 -62 31 -24 61 -43 67 -43 19 0
+-1 143 -36 255 -19 61 -30 111 -26 113 20 8 197 -90 259 -144 14 -11 34 -24
+44 -28 60 -21 -56 464 -162 677 -21 44 -31 75 -26 85 7 18 25 62 67 173 14 37
+35 86 46 110 10 24 25 62 31 83 7 22 22 55 33 74 18 31 19 45 14 160 -7 141
+-51 414 -92 567 -45 169 -85 308 -102 355 -8 25 -19 86 -23 135 -13 154 -16
+160 -86 222 -75 66 -117 93 -145 93 -18 0 -19 -2 -9 -15 7 -8 17 -15 22 -15 6
+0 26 -12 44 -27 19 -16 50 -41 69 -57 51 -41 77 -98 83 -181 l4 -70 -28 38
+c-111 147 -145 184 -229 252 -93 76 -91 75 -239 75 -110 0 -135 -3 -140 -15
+-3 -8 -10 -15 -17 -15 -6 0 -9 7 -5 15 6 17 -9 21 -20 4 -3 -6 -1 -16 5 -22
+17 -17 13 -31 -4 -17 -8 7 -15 21 -15 31 0 11 -4 19 -10 19 -5 0 -10 -6 -10
+-12 0 -10 -2 -10 -9 0 -5 9 -23 12 -52 10 -42 -3 -43 -4 -19 -15 37 -18 94
+-73 119 -114 34 -58 38 -119 10 -176 -71 -149 -220 -203 -423 -153 -218 53
+-298 140 -275 298 10 64 36 117 66 135 20 12 15 27 -10 27 -16 0 -32 -14 -55
+-51 -29 -43 -36 -66 -48 -157 -8 -59 -15 -141 -16 -183 l-2 -76 -90 -17 c-263
+-49 -596 -43 -811 13 l-110 29 0 109 c0 59 -6 137 -14 172 -21 98 -87 161
+-168 161 l-38 -1 48 -23 c128 -63 172 -176 100 -259 -35 -41 -142 -91 -251
+-118 -69 -17 -91 -18 -148 -9 -144 23 -169 50 -159 167 4 43 15 92 23 108 l16
+30 7 -38 c9 -54 46 -88 103 -94 27 -3 59 0 77 7 29 13 31 16 26 56 -4 40 -3
+43 14 33 11 -5 19 -14 19 -18 0 -20 31 -19 54 2 28 25 57 106 49 136 -5 20
+-12 21 -152 21 l-147 0 -36 -32z m2402 -66 c0 -10 5 -23 12 -30 9 -9 9 -12 0
+-12 -6 0 -18 14 -27 30 -14 27 -14 30 0 30 8 0 15 -8 15 -18z m134 -18 c3 -8
+2 -12 -4 -9 -6 3 -10 10 -10 16 0 14 7 11 14 -7z m26 -50 c0 -8 -4 -12 -10 -9
+-5 3 -10 10 -10 16 0 5 5 9 10 9 6 0 10 -7 10 -16z m-33 -46 c-3 -8 -6 -5 -6
+6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-110 -90 c-3 -7 -5 -2 -5 12 0 14 2 19
+5 13 2 -7 2 -19 0 -25z m217 6 c10 -25 -1 -29 -14 -5 -6 12 -7 21 -1 21 5 0
+12 -7 15 -16z m-2087 -46 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2 -19 0 -25z
+m1863 5 c0 -9 6 -13 15 -9 8 3 15 1 15 -4 0 -6 -5 -10 -12 -10 -9 0 -9 -3 0
+-12 17 -17 15 -29 -3 -22 -8 4 -15 15 -15 25 0 10 -4 19 -9 19 -6 0 -9 9 -8
+19 1 23 17 17 17 -6z m-1881 -49 c-1 -30 -5 -51 -8 -46 -3 5 -13 12 -21 15
+-12 4 -12 6 2 6 11 1 17 8 16 19 -2 28 2 62 7 62 3 0 5 -25 4 -56z m-45 11
+c-19 -14 -19 -14 0 -15 11 0 17 -2 14 -5 -3 -3 -19 -2 -37 1 -32 7 -32 7 -9
+19 33 19 57 19 32 0z m1161 -14 c3 -5 1 -12 -5 -16 -5 -3 -10 1 -10 9 0 18 6
+21 15 7z m-1240 -21 c3 -5 -3 -10 -14 -10 -10 0 -22 -6 -24 -12 -4 -8 -6 -7
+-6 4 -1 23 32 37 44 18z m61 -8 c-10 -2 -22 0 -28 6 -6 6 0 7 19 4 21 -5 23
+-7 9 -10z m1228 3 c3 -8 2 -15 -3 -15 -5 0 -14 7 -21 15 -10 12 -10 15 3 15 8
+0 17 -7 21 -15z m856 5 c0 -5 -2 -10 -4 -10 -3 0 -8 5 -11 10 -3 6 -1 10 4 10
+6 0 11 -4 11 -10z m77 -6 c-3 -3 -12 -4 -19 -1 -8 3 -5 6 6 6 11 1 17 -2 13
+-5z m-2164 -21 c-13 -2 -33 -2 -45 0 -13 2 -3 4 22 4 25 0 35 -2 23 -4z m1154
+-15 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m107 -3 c-6 -14 -44
+-22 -44 -10 0 4 29 19 47 24 1 1 0 -6 -3 -14z m69 -12 c3 -5 -6 -9 -20 -10
+-19 -1 -22 1 -12 8 17 11 26 11 32 2z m20 -30 c-13 -2 -33 -2 -45 0 -13 2 -3
+4 22 4 25 0 35 -2 23 -4z m-611 -58 c9 -10 -9 -97 -23 -107 -14 -9 -177 -4
+-236 8 -27 5 -33 11 -33 33 0 14 3 36 6 49 6 21 10 22 143 22 76 0 140 -2 143
+-5z m-279 -373 c-2 -10 -13 -24 -24 -31 -19 -11 -18 -9 2 18 26 36 29 37 22
+13z m-43 -87 c0 -5 -5 -3 -10 5 -5 8 -10 20 -10 25 0 6 5 3 10 -5 5 -8 10 -19
+10 -25z m-24 -40 c-6 -14 -12 -20 -14 -15 -6 16 -22 12 -22 -5 0 -8 -4 -15
+-10 -15 -30 0 10 55 41 57 14 1 15 -2 5 -22z m909 -87 c-3 -54 -3 -57 5 -23
+l8 40 -3 -40 c-1 -22 -6 -51 -10 -65 -5 -20 -5 -22 5 -10 10 13 11 12 6 -3 -3
+-10 -6 -25 -6 -33 0 -23 -15 -16 -17 9 -1 12 -2 33 -3 47 -5 50 3 140 11 140
+5 0 7 -28 4 -62z m-1374 15 c-12 -20 -14 -14 -5 12 4 9 9 14 11 11 3 -2 0 -13
+-6 -23z m539 -1 c0 -4 -9 -14 -20 -22 -15 -11 -19 -22 -15 -41 7 -30 -26 -81
+-39 -61 -4 7 -1 12 7 12 16 0 29 44 16 57 -5 5 2 20 14 35 22 27 37 35 37 20z
+m-110 -23 c0 -5 -4 -9 -10 -9 -5 0 -10 7 -10 16 0 8 5 12 10 9 6 -3 10 -10 10
+-16z m-20 -44 c0 -14 -4 -25 -10 -25 -11 0 -14 33 -3 43 11 11 13 8 13 -18z
+m70 -14 c0 -6 -4 -13 -10 -16 -5 -3 -10 1 -10 9 0 9 5 16 10 16 6 0 10 -4 10
+-9z m590 -6 c0 -8 -4 -15 -10 -15 -5 0 -10 7 -10 15 0 8 5 15 10 15 6 0 10 -7
+10 -15z m267 -7 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m-953
+-116 c-5 -31 -9 -39 -12 -24 -2 12 -8 20 -13 17 -5 -4 -9 -1 -9 5 0 7 7 9 16
+6 15 -6 16 1 11 56 -4 55 -4 58 5 25 6 -22 7 -57 2 -85z m933 81 c-3 -10 -5
+-4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m43 -12 c0 -6 -4 -13 -10 -16 -5
+-3 -10 1 -10 9 0 9 5 16 10 16 6 0 10 -4 10 -9z m-1383 -33 c-3 -8 -6 -5 -6 6
+-1 11 2 17 5 13 3 -3 4 -12 1 -19z m1234 -203 c39 -77 59 -102 59 -75 0 5 13
+24 28 42 31 35 91 157 93 186 1 9 12 -17 25 -58 15 -48 27 -112 31 -178 7
+-120 10 -120 73 -1 23 45 41 68 44 59 8 -24 38 -132 47 -170 18 -69 49 -347
+51 -442 1 -54 5 -98 10 -98 4 0 8 4 8 9 0 5 6 16 13 23 7 7 26 36 42 63 46 81
+51 85 115 85 75 0 116 -27 153 -99 33 -67 34 -114 3 -203 -28 -79 -56 -108
+-145 -150 -51 -23 -84 -31 -158 -37 l-93 -6 -58 -58 c-31 -31 -76 -72 -99 -89
+-87 -68 -130 -98 -141 -98 -6 0 -23 -10 -39 -23 -53 -44 -171 -90 -329 -131
+-79 -21 -257 -29 -369 -17 -113 12 -331 64 -387 92 -21 10 -43 19 -50 19 -8 0
+-45 16 -83 36 -194 100 -316 201 -360 299 -5 11 -9 130 -10 265 -1 238 -2 247
+-28 325 -15 44 -27 103 -27 130 -1 52 60 325 72 325 11 0 14 -58 6 -150 -3
+-47 -4 -87 -2 -89 8 -8 131 129 150 167 11 20 29 51 40 68 l21 33 11 -98 c17
+-148 24 -156 82 -96 19 19 39 35 44 35 12 0 144 126 185 176 13 16 28 39 34
+51 6 13 13 23 16 23 3 0 6 -37 6 -83 0 -64 5 -92 23 -129 12 -26 22 -52 22
+-57 0 -13 38 -21 107 -21 81 0 153 37 251 130 39 37 122 152 122 170 0 5 3 10
+8 10 4 0 15 -35 26 -78 17 -71 59 -162 75 -162 21 0 148 160 165 208 39 106
+37 105 57 25 9 -40 37 -111 60 -158z m-864 193 c-3 -8 -6 -5 -6 6 -1 11 2 17
+5 13 3 -3 4 -12 1 -19z m1000 -20 c-3 -7 -5 -2 -5 12 0 14 2 19 5 13 2 -7 2
+-19 0 -25z m20 10 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z
+m-1400 -130 c-2 -24 -4 -5 -4 42 0 47 2 66 4 43 2 -24 2 -62 0 -85z m-383 58
+c-1 -21 -6 -42 -12 -48 -7 -7 -8 2 -1 32 8 33 7 45 -3 52 -10 7 -10 9 2 5 10
+-3 15 -16 14 -41z m1753 22 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1
+-19z m-972 -67 c-5 -19 -8 -22 -15 -11 -6 10 -10 6 -13 -16 -2 -16 -2 -4 0 26
+3 30 8 59 11 64 9 16 23 -37 17 -63z m-884 32 c-12 -20 -14 -14 -5 12 4 9 9
+14 11 11 3 -2 0 -13 -6 -23z m-26 -25 c-2 -19 1 -36 8 -40 9 -5 7 -11 -7 -21
+-17 -13 -18 -21 -8 -138 9 -107 14 -134 43 -194 46 -98 118 -189 143 -179 27
+10 44 -164 26 -262 -22 -116 -17 -209 15 -279 26 -58 99 -139 173 -193 43 -30
+203 -122 214 -122 5 0 19 -7 31 -15 62 -40 304 -104 462 -122 50 -5 95 -25 95
+-43 0 -4 -28 -22 -62 -40 -35 -17 -83 -43 -108 -59 l-45 -28 -45 32 c-25 17
+-79 51 -120 75 -41 23 -87 51 -102 61 -15 11 -30 19 -34 19 -10 0 -126 72
+-161 100 -17 14 -61 47 -97 75 -36 27 -66 53 -66 57 0 4 -31 44 -70 90 -71 85
+-75 90 -133 168 -32 44 -97 176 -97 197 0 13 -32 75 -42 83 -45 34 -82 715
+-43 791 19 37 35 29 30 -13z m1885 32 c0 -5 -2 -10 -4 -10 -3 0 -8 5 -11 10
+-3 6 -1 10 4 10 6 0 11 -4 11 -10z m-22 -46 c0 -19 -3 -23 -10 -13 -7 10 -8 7
+-4 -10 4 -18 2 -21 -6 -13 -9 9 -8 18 2 37 17 31 18 31 18 -1z m-1834 1 c-4
+-8 -7 -15 -9 -15 -2 0 -5 7 -9 15 -3 9 0 15 9 15 9 0 12 -6 9 -15z m2300 -77
+c-2 -3 0 -9 6 -13 12 -7 11 -77 -1 -120 -5 -20 -6 -6 -3 41 3 40 1 74 -4 75
+-5 2 -13 20 -16 39 -7 34 -7 35 8 10 8 -14 12 -28 10 -32z m-1432 -14 c-8 -15
+-10 -15 -15 0 -4 9 -2 16 3 16 6 0 11 10 11 23 l2 22 4 -22 c2 -12 0 -30 -5
+-39z m-378 20 c3 -8 2 -12 -4 -9 -6 3 -10 10 -10 16 0 14 7 11 14 -7z m-493
+-23 c6 10 9 3 9 -21 0 -24 -3 -31 -9 -21 -7 11 -10 10 -14 -5 -2 -10 -5 4 -4
+31 0 28 2 39 4 26 4 -19 7 -21 14 -10z m1799 9 c0 -5 -5 -10 -11 -10 -5 0 -7
+5 -4 10 3 6 8 10 11 10 2 0 4 -4 4 -10z m-1303 -92 c-2 -13 -4 -5 -4 17 -1 22
+1 32 4 23 2 -10 2 -28 0 -40z m1762 5 c-2 -26 -2 -27 -6 -4 -4 18 -7 21 -13
+10 -5 -7 -12 -10 -15 -7 -10 10 4 28 21 28 9 0 14 -10 13 -27z m-2240 -50 c1
+-12 -4 -25 -9 -28 -7 -4 -8 3 -4 21 5 21 4 25 -6 19 -10 -6 -12 -4 -7 9 4 10
+7 23 8 29 1 19 18 -26 18 -50z m2198 15 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3
+-3 4 -12 1 -19z m-2187 -78 c0 -5 -2 -10 -4 -10 -3 0 -8 5 -11 10 -3 6 -1 10
+4 10 6 0 11 -4 11 -10z m2287 -77 c-3 -10 -5 -2 -5 17 0 19 2 27 5 18 2 -10 2
+-26 0 -35z m893 -308 c0 -5 11 -37 24 -70 48 -119 114 -360 131 -479 5 -39 4
+-47 -7 -40 -19 11 -92 68 -98 76 -22 28 -191 118 -224 118 -27 0 -26 -17 10
+-106 19 -49 39 -107 43 -129 25 -113 31 -149 26 -154 -5 -5 -26 13 -82 72 -14
+15 -30 27 -34 27 -4 0 -27 13 -51 28 -24 15 -71 41 -106 57 -82 38 -89 30 -67
+-64 14 -55 17 -100 13 -211 -2 -77 -8 -143 -12 -147 -7 -7 -16 2 -59 58 -17
+24 -109 129 -128 148 -29 28 -110 96 -120 99 -18 7 -8 19 64 72 39 30 80 61
+89 70 9 8 34 28 55 43 75 55 219 171 243 196 54 56 108 142 167 261 34 69 64
+134 68 144 5 17 9 15 30 -20 13 -21 25 -43 25 -49z m-1030 -462 c0 -4 -33 -41
+-73 -82 -40 -42 -104 -111 -142 -154 -70 -79 -85 -96 -137 -159 -16 -18 -37
+-44 -49 -58 -12 -14 -27 -34 -35 -44 -14 -21 -24 -19 -164 28 -25 8 -57 17
+-72 20 -44 10 -37 43 10 52 20 3 68 19 106 35 37 16 72 29 76 29 8 0 109 58
+155 90 87 59 158 116 225 179 66 63 100 85 100 64z m-729 -470 c1 -32 3 -50 6
+-40 2 9 8 17 13 17 13 0 20 -28 20 -84 0 -66 -27 -109 -90 -143 -81 -43 -179
+-11 -214 70 -15 34 -16 47 -6 89 13 51 26 62 33 26 3 -18 4 -16 5 7 1 17 -5
+44 -12 60 l-13 30 101 11 c171 19 156 23 157 -43z m-1377 -741 c3 -5 8 -50 12
+-100 l7 -92 -48 6 c-71 8 -108 30 -101 59 5 18 1 24 -17 29 -31 8 -75 47 -79
+71 -3 18 4 20 92 26 52 3 103 6 112 7 9 1 19 -2 22 -6z"/>
+<path d="M2205 2204 c-22 -3 -62 -9 -89 -14 -27 -6 -92 -15 -144 -20 -52 -6
+-101 -15 -109 -21 -17 -14 -17 -48 0 -55 7 -2 66 5 132 16 66 12 184 24 263
+27 91 4 141 10 139 16 -13 40 -92 61 -192 51z"/>
+<path d="M778 2177 c-16 -13 -28 -25 -28 -28 0 -4 35 -9 78 -12 42 -4 139 -19
+214 -33 141 -27 168 -27 168 1 0 18 -39 35 -78 35 -15 0 -79 13 -142 30 -138
+36 -176 37 -212 7z"/>
+<path d="M965 2050 c-110 -13 -225 -52 -225 -77 0 -7 6 -13 14 -13 8 0 16 -5
+18 -12 3 -8 11 -7 28 5 31 22 50 22 50 0 0 -15 2 -14 15 4 32 45 115 37 115
+-12 0 -28 -43 -65 -74 -65 -25 0 -51 18 -59 40 -10 27 -7 -45 3 -106 15 -84
+29 -114 67 -151 38 -38 39 -40 16 -47 -10 -3 3 -3 30 0 26 3 76 5 112 5 36 0
+65 4 65 10 0 5 -7 9 -15 9 -19 0 -19 9 -1 29 29 34 49 147 43 237 l-6 85 44
+-7 c37 -5 45 -3 45 9 0 16 -31 28 -115 45 -82 17 -107 19 -170 12z m150 -106
+c0 -13 -8 -20 -27 -22 -32 -4 -39 21 -10 37 23 14 37 8 37 -15z m-75 2 c0 -16
+-18 -31 -27 -22 -8 8 5 36 17 36 5 0 10 -6 10 -14z m98 -95 c-2 -29 -8 -37
+-25 -39 -22 -3 -33 -22 -13 -22 15 0 12 -45 -5 -85 -14 -36 -46 -55 -91 -55
+-18 0 -31 10 -45 35 -12 19 -27 35 -35 35 -8 0 -14 10 -14 25 0 28 9 32 29 13
+10 -11 11 -10 7 2 -8 21 11 49 22 33 13 -20 59 -34 70 -20 27 35 26 40 -6 34
+-36 -7 -67 17 -41 34 8 5 20 9 27 9 6 0 12 5 12 10 0 16 58 38 86 32 22 -4 25
+-9 22 -41z"/>
+<path d="M2051 2041 c-89 -23 -191 -70 -191 -88 0 -19 20 -16 55 7 17 11 33
+20 37 20 4 0 7 -46 7 -102 0 -115 16 -175 56 -216 14 -14 25 -29 25 -33 0 -5
+8 -9 18 -9 15 -1 15 -2 -2 -15 -11 -8 -17 -17 -15 -20 3 -2 41 0 85 6 43 6
+105 11 137 11 32 0 55 4 52 9 -4 5 -15 9 -26 9 -25 0 -24 8 5 39 43 47 60 122
+53 238 l-7 102 30 -6 c19 -3 30 -1 30 6 0 6 7 11 15 11 8 0 15 4 15 10 0 17
+-75 31 -190 36 -90 3 -131 0 -189 -15z m69 -56 c19 -23 3 -63 -33 -85 -39 -24
+-65 -25 -95 -4 -31 21 -27 48 11 78 36 29 97 35 117 11z m158 -8 c4 -21 -25
+-34 -40 -19 -8 8 -8 16 2 27 16 19 34 15 38 -8z m-76 -2 c0 -5 -5 -11 -11 -13
+-6 -2 -11 4 -11 13 0 9 5 15 11 13 6 -2 11 -8 11 -13z m102 -61 c10 -4 16 -18
+16 -40 0 -38 -20 -54 -72 -54 -28 -1 -31 -2 -17 -13 25 -19 39 -52 39 -91 0
+-31 -6 -40 -42 -66 -43 -32 -84 -38 -121 -18 -26 13 -67 55 -67 68 0 4 -5 10
+-12 12 -16 6 -1 58 17 58 8 0 15 4 15 9 0 19 33 20 57 1 34 -26 47 -25 72 6
+21 27 21 27 1 59 -18 29 -18 33 -4 53 12 17 25 22 59 22 24 0 50 -3 59 -6z
+m-124 -94 c0 -5 -2 -10 -4 -10 -2 0 -11 -3 -19 -6 -8 -3 -17 2 -20 10 -5 12 0
+16 18 16 14 0 25 -4 25 -10z"/>
+<path d="M2738 1794 c-17 -16 -6 -24 31 -24 56 0 57 -8 15 -108 -10 -26 -30
+-50 -51 -63 -35 -22 -43 -39 -17 -39 40 0 102 80 129 165 6 18 9 16 28 -17 26
+-45 51 -51 41 -10 -4 15 -22 42 -40 61 -26 27 -42 35 -81 38 -26 3 -51 1 -55
+-3z"/>
+<path d="M848 1543 c-26 -31 -30 -43 -14 -43 9 0 16 8 16 18 0 10 5 23 12 30
+7 7 10 12 7 12 -3 0 -13 -8 -21 -17z"/>
+<path d="M976 1544 c-4 -9 -4 -19 -1 -22 2 -3 7 3 11 12 4 9 4 19 1 22 -2 3
+-7 -3 -11 -12z"/>
+<path d="M2307 1536 c-4 -10 -5 -21 -2 -24 9 -9 17 6 13 25 -3 17 -4 17 -11
+-1z"/>
+<path d="M2351 1532 c-13 -25 -14 -52 -2 -52 10 0 26 58 18 67 -3 2 -10 -4
+-16 -15z"/>
+<path d="M2236 1524 c-9 -22 3 -32 14 -14 12 19 12 30 1 30 -5 0 -12 -7 -15
+-16z"/>
+<path d="M2130 1509 c-13 -24 -4 -41 10 -19 10 16 13 40 5 40 -2 0 -9 -9 -15
+-21z"/>
+<path d="M1581 1433 c-268 -4 -281 -6 -281 -64 0 -28 57 -89 83 -89 7 1 -5 15
+-26 33 -34 30 -49 69 -29 81 4 2 124 6 267 7 l260 3 3 -28 c3 -20 -6 -38 -35
+-69 -46 -52 -118 -87 -195 -96 -62 -8 -90 -21 -42 -21 130 0 242 54 283 134
+11 24 21 48 21 53 0 17 -41 63 -53 61 -7 -2 -122 -4 -256 -5z"/>
+<path d="M1342 2580 c0 -14 2 -19 5 -12 2 6 2 18 0 25 -3 6 -5 1 -5 -13z"/>
+<path d="M2357 3968 c-9 -19 -15 -54 -14 -88 2 -47 8 -63 35 -97 27 -35 41
+-43 78 -49 66 -10 141 0 165 22 18 16 19 26 14 84 l-6 65 31 -57 c18 -34 37
+-58 46 -58 9 0 31 16 49 36 34 37 51 102 39 150 l-6 24 -208 0 -208 0 -15 -32z"/>
+<path d="M2380 272 c0 -5 13 -15 29 -22 16 -6 39 -22 51 -35 19 -21 82 -149
+97 -197 3 -10 14 -18 25 -18 11 0 18 3 16 8 -2 4 -18 36 -36 72 -18 36 -38 73
+-44 82 -18 25 -3 33 25 15 36 -23 283 -112 448 -161 31 -9 80 -16 110 -15 53
+1 53 1 19 11 -19 5 -62 18 -95 29 -33 11 -94 31 -135 44 -130 41 -337 120
+-415 158 -65 31 -95 41 -95 29z"/>
+<path d="M1802 171 c2 -7 7 -12 11 -12 12 1 9 15 -3 20 -7 2 -11 -2 -8 -8z"/>
+<path d="M1797 99 c-4 -13 -7 -41 -7 -61 0 -31 4 -38 20 -38 17 0 20 7 20 43
+0 24 -6 51 -13 62 -13 17 -14 17 -20 -6z"/>
+<path d="M3510 112 c0 -4 16 -14 36 -21 44 -16 42 -41 -6 -59 l-35 -13 38 5
+c75 10 88 45 27 76 -42 21 -60 25 -60 12z"/>
+</g>
+</svg>
+<a title="Feed  body with  food, feed your soul with love." href="/">Xiang Li's Space</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item navigation__item--active"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Archive</h1></header></div><meta itemprop="headline" content="Archive"><meta itemprop="author" content="Xiang Li (Sean)"/><div class="js-article-content"><div class="layout--archive js-all"><div class="site-tags js-tags">
+  <ul class="menu">
+    <li>
+      <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
+        Show All<div class="tag-button__count">26</div>
+      </button>
+    </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="3D">
+          <span>3D</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Acticate+Funtion">
+          <span>Acticate Funtion</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Book">
+          <span>Book</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Cmake%EF%BC%8CC%2B%2B">
+          <span>Cmake，C++</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="DNN">
+          <span>DNN</span><div class="tag-button__count">2</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Detector2">
+          <span>Detector2</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-3" data-encode="Dexforce">
+          <span>Dexforce</span><div class="tag-button__count">3</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Docker">
+          <span>Docker</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Latex">
+          <span>Latex</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="ML">
+          <span>ML</span><div class="tag-button__count">2</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Markdown">
+          <span>Markdown</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Minizinc">
+          <span>Minizinc</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Movies">
+          <span>Movies</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Nanopi+R1SH5">
+          <span>Nanopi R1SH5</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Openwrt">
+          <span>Openwrt</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Optimisation">
+          <span>Optimisation</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Papers">
+          <span>Papers</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="PointCloud">
+          <span>PointCloud</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Popos">
+          <span>Popos</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Probability">
+          <span>Probability</span><div class="tag-button__count">2</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Python">
+          <span>Python</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Pytorch">
+          <span>Pytorch</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-3" data-encode="Reading">
+          <span>Reading</span><div class="tag-button__count">3</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Surface">
+          <span>Surface</span><div class="tag-button__count">2</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Surface+Kernel">
+          <span>Surface Kernel</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Ubuntu">
+          <span>Ubuntu</span><div class="tag-button__count">2</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Ubuntu16.04">
+          <span>Ubuntu16.04</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Vscode">
+          <span>Vscode</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Wedding">
+          <span>Wedding</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Zotero">
+          <span>Zotero</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-3" data-encode="d2l">
+          <span>d2l</span><div class="tag-button__count">3</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="frp">
+          <span>frp</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="juypter">
+          <span>juypter</span><div class="tag-button__count">1</div>
+        </button>
+      </li><li><button type="button" class="button button--pill tag-button tag-button-3" data-encode="notes">
+          <span>notes</span><div class="tag-button__count">3</div>
+        </button>
+      </li></ul>
+</div>
+<div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2022</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Python,Dexforce">
+        <div class="item__content"><span class="item__meta">Jan 24</span><a itemprop="headline" class="item__header" href="/2022/01/24/Python-Memo.html">Python Memo</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Detector2,Dexforce">
+        <div class="item__content"><span class="item__meta">Jan 24</span><a itemprop="headline" class="item__header" href="/2022/01/24/detector2.html">Detector2 Tutorial</a></div>
+      </li></ul></section><section><h2 class="article-list__group-header">2021</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Dexforce,Reading">
+        <div class="item__content"><span class="item__meta">Dec 27</span><a itemprop="headline" class="item__header" href="/2021/12/27/ellipse.html">Ellipse Detection</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="d2l,notes">
+        <div class="item__content"><span class="item__meta">Nov 25</span><a itemprop="headline" class="item__header" href="/2021/11/25/D2L3.html">Dive into Deep Learning Notes(3)</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="d2l,notes">
+        <div class="item__content"><span class="item__meta">Nov 23</span><a itemprop="headline" class="item__header" href="/2021/11/23/D2L2.html">Dive into Deep Learning Notes(2)</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="d2l,notes">
+        <div class="item__content"><span class="item__meta">Nov 11</span><a itemprop="headline" class="item__header" href="/2021/11/11/D2L.html">Dive into Deep Learning Notes(1)</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="PointCloud,Papers">
+        <div class="item__content"><span class="item__meta">Nov 11</span><a itemprop="headline" class="item__header" href="/2021/11/11/Papers.html">3D Point Cloud Papers</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Wedding">
+        <div class="item__content"><span class="item__meta">Oct 14</span><a itemprop="headline" class="item__header" href="/2021/10/14/wedding.html">我们的婚礼</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="frp">
+        <div class="item__content"><span class="item__meta">Oct 14</span><a itemprop="headline" class="item__header" href="/2021/10/14/frp-reverse.html">frp proxy</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="3D">
+        <div class="item__content"><span class="item__meta">Sep 15</span><a itemprop="headline" class="item__header" href="/2021/09/15/3D-Space.html">3D Space Tutorial</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Cmake%EF%BC%8CC%2B%2B">
+        <div class="item__content"><span class="item__meta">Aug 27</span><a itemprop="headline" class="item__header" href="/2021/08/27/Cmake.html">C++ Tutorial</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Popos,Ubuntu">
+        <div class="item__content"><span class="item__meta">Jul 19</span><a itemprop="headline" class="item__header" href="/2021/07/19/Popos.html">运维 memo</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Zotero">
+        <div class="item__content"><span class="item__meta">Jul 05</span><a itemprop="headline" class="item__header" href="/2021/07/05/Zotero.html">Zotero Tutorial</a></div>
+      </li></ul></section><section><h2 class="article-list__group-header">2020</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="ML,Probability">
+        <div class="item__content"><span class="item__meta">Sep 23</span><a itemprop="headline" class="item__header" href="/2020/09/23/Generative-vs-Discriment.html">Generative vs. Discriminative</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="ML,Probability">
+        <div class="item__content"><span class="item__meta">Sep 23</span><a itemprop="headline" class="item__header" href="/2020/09/23/probability.html">概率分布的方法和公式</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Markdown">
+        <div class="item__content"><span class="item__meta">Sep 23</span><a itemprop="headline" class="item__header" href="/2020/09/23/markdown.html">Markdown Tutorial</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Docker,Pytorch">
+        <div class="item__content"><span class="item__meta">Mar 22</span><a itemprop="headline" class="item__header" href="/2020/03/22/Docker.html">Docker Tutorial</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Openwrt,Nanopi+R1SH5">
+        <div class="item__content"><span class="item__meta">Mar 08</span><a itemprop="headline" class="item__header" href="/2020/03/08/Openwrt-R1SH5.html">Openwrt R1SH5</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Ubuntu,Latex,Vscode">
+        <div class="item__content"><span class="item__meta">Mar 05</span><a itemprop="headline" class="item__header" href="/2020/03/05/Latex-Introduction.html">Latex for Ubuntu with Vscode</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Ubuntu16.04,Surface,Surface+Kernel,DNN">
+        <div class="item__content"><span class="item__meta">Mar 04</span><a itemprop="headline" class="item__header" href="/2020/03/04/Ubntu-For-Surface.html">Install Nvidia Driver For Ubuntu 16.04 on Sufacebook2</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Movies,Reading">
+        <div class="item__content"><span class="item__meta">Mar 01</span><a itemprop="headline" class="item__header" href="/2020/03/01/Movies-List.html">Movie List</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Book,Reading">
+        <div class="item__content"><span class="item__meta">Feb 29</span><a itemprop="headline" class="item__header" href="/2020/02/29/book-list.html">Reading List</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Surface">
+        <div class="item__content"><span class="item__meta">Feb 29</span><a itemprop="headline" class="item__header" href="/2020/02/29/Split-screen.html">Split screen</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Acticate+Funtion,DNN">
+        <div class="item__content"><span class="item__meta">Feb 26</span><a itemprop="headline" class="item__header" href="/2020/02/26/DNN-Acticate-Funtion.html">Acticate Funtion</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Minizinc,Optimisation">
+        <div class="item__content"><span class="item__meta">Feb 26</span><a itemprop="headline" class="item__header" href="/2020/02/26/Optimisation-Minizinc.html">Minizinc</a></div>
+      </li></ul></section><section><h2 class="article-list__group-header">2019</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="juypter">
+        <div class="item__content"><span class="item__meta">Dec 26</span><a itemprop="headline" class="item__header" href="/2019/12/26/Install.html">Juypter Memo</a></div>
+      </li></div>
+</div>
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  function queryString() {
+    // This function is anonymous, is executed immediately and
+    // the return value is assigned to QueryString!
+    var i = 0, queryObj = {}, pair;
+    var queryStr = window.location.search.substring(1);
+    var queryArr = queryStr.split('&');
+    for (i = 0; i < queryArr.length; i++) {
+      pair = queryArr[i].split('=');
+      // If first entry with this name
+      if (typeof queryObj[pair[0]] === 'undefined') {
+        queryObj[pair[0]] = pair[1];
+        // If second entry with this name
+      } else if (typeof queryObj[pair[0]] === 'string') {
+        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
+        // If third or later entry with this name
+      } else {
+        queryObj[pair[0]].push(pair[1]);
+      }
+    }
+    return queryObj;
+  }
+
+  var setUrlQuery = (function() {
+    var baseUrl =  window.location.href.split('?')[0];
+    return function(query) {
+      if (typeof query === 'string') {
+        window.history.replaceState(null, '', baseUrl + query);
+      } else {
+        window.history.replaceState(null, '', baseUrl);
+      }
+    };
+  })();
+
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $tags = $('.js-tags');
+    var $articleTags = $tags.find('button');
+    var $tagShowAll = $tags.find('.tag-button--all');
+    var $result = $('.js-result');
+    var $sections = $result.find('section');
+    var sectionArticles = [];
+    var $lastFocusButton = null;
+    var sectionTopArticleIndex = [];
+    var hasInit = false;
+
+    $sections.each(function() {
+      sectionArticles.push($(this).find('.item'));
+    });
+
+    function init() {
+      var i, index = 0;
+      for (i = 0; i < $sections.length; i++) {
+        sectionTopArticleIndex.push(index);
+        index += $sections.eq(i).find('.item').length;
+      }
+      sectionTopArticleIndex.push(index);
+    }
+
+    function searchButtonsByTag(_tag/*raw tag*/) {
+      if (!_tag) {
+        return $tagShowAll;
+      }
+      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
+      if (_buttons.length === 0) {
+        return $tagShowAll;
+      }
+      return _buttons;
+    }
+    function buttonFocus(target) {
+      if (target) {
+        target.addClass('focus');
+        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
+        $lastFocusButton = target;
+      }
+    }
+
+    function tagSelect (tag/*raw tag*/, target) {
+      var result = {}, $articles;
+      var i, j, k, _tag;
+
+      for (i = 0; i < sectionArticles.length; i++) {
+        $articles = sectionArticles[i];
+        for (j = 0; j < $articles.length; j++) {
+          if (tag === '' || tag === undefined) {
+            result[i] || (result[i] = {});
+            result[i][j] = true;
+          } else {
+            var tags = $articles.eq(j).data('tags').split(',');
+            for (k = 0; k < tags.length; k++) {
+              if (tags[k] === tag) {
+                result[i] || (result[i] = {});
+                result[i][j] = true; break;
+              }
+            }
+          }
+        }
+      }
+
+      for (i = 0; i < sectionArticles.length; i++) {
+        result[i] && $sections.eq(i).removeClass('d-none');
+        result[i] || $sections.eq(i).addClass('d-none');
+        for (j = 0; j < sectionArticles[i].length; j++) {
+          if (result[i] && result[i][j]) {
+            sectionArticles[i].eq(j).removeClass('d-none');
+          } else {
+            sectionArticles[i].eq(j).addClass('d-none');
+          }
+        }
+      }
+
+      hasInit || ($result.removeClass('d-none'), hasInit = true);
+
+
+      if (target) {
+        buttonFocus(target);
+        _tag = target.attr('data-encode');
+        if (_tag === '' || typeof _tag !== 'string') {
+          setUrlQuery();
+        } else {
+          setUrlQuery('?tag=' + _tag);
+        }
+      } else {
+        buttonFocus(searchButtonsByTag(tag));
+      }
+    }
+
+    var query = queryString(), _tag = query.tag;
+    init(); tagSelect(_tag);
+    $tags.on('click', 'button', function() {
+      tagSelect($(this).data('encode'), $(this));
+    });
+
+  });
+})();
+</script>
+
+
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiang Li (Sean)"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><li title="Send me an Email.">
+      <a class="button button--circle mail-button" itemprop="email" href="mailto:lixiangwhuerhy@gmail,com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a><li title="Follow me on Github.">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/babylonehy" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+</svg>
+</div>
+        </a>
+      </li></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© Xiang Li (Sean) 2019 - 2021,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>. </br>
+        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2021139948号</a> </br>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>window.useDefaultSearchBox = false;</script><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']],
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code','details'] 
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+
